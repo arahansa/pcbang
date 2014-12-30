@@ -43,7 +43,7 @@ public class DBConnectionMgr {
     
     		_url = "jdbc:mysql://54.238.254.206:3306/pcbang?useUnicode=true&amp;characterEncoding=utf8&connectTimeout=3000",
     _user = "pcbang",
-    _password = "hanbit";
+    _password = "1234";
 
     
     private boolean _traceOn = false;
