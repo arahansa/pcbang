@@ -39,11 +39,18 @@ import java.util.Vector;
  */
 public class DBConnectionMgr {
     private Vector<ConnectionObject> connections = new Vector<ConnectionObject>(10);
-    private String _driver = "org.gjt.mm.mysql.Driver",
-    
-    		_url = "jdbc:mysql://54.238.254.206:3306/pcbang?useUnicode=true&amp;characterEncoding=utf8&connectTimeout=3000",
+    /*private String _driver = "org.gjt.mm.mysql.Driver",
+    _url = "jdbc:mysql://54.238.254.206:3306/pcbang?useUnicode=true&amp;characterEncoding=utf8&connectTimeout=3000",
     _user = "pcbang",
-    _password = "1234";
+    _password = "1234";*/
+    
+    private String _driver = "org.h2.Driver",
+    /*
+    _url = "jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE",
+     */
+	_url = "jdbc:h2:~/test",
+    _user = "sa",
+    _password = "";
 
     
     private boolean _traceOn = false;
