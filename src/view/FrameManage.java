@@ -15,7 +15,7 @@ import view.panel.PanImgload;
 import asset.Setting;
 
 @SuppressWarnings("serial")
-public class ManageView extends JFrame {
+public class FrameManage extends JFrame {
 
 	public JLayeredPane layeredPane = new JLayeredPane();
 	// JPanels
@@ -25,7 +25,7 @@ public class ManageView extends JFrame {
 	private ClockMessage clockMessage = new ClockMessage();
 
 	
-	public ManageView() throws Exception {
+	public FrameManage()  {
 		// Configure this Frame
 		setLayout(null);
 		setVisible(true);
@@ -38,8 +38,8 @@ public class ManageView extends JFrame {
 	}
 
 	public static void main(String[] args) throws Exception {
-		ManageView manageView = new ManageView();
-		manageView.setRectangles(ManageView.class, manageView, Setting.class, Setting.getInstance());
+		FrameManage manageView = new FrameManage();
+		manageView.setRectangles(FrameManage.class, manageView, Setting.class, Setting.getInstance());
 		
 	}
 

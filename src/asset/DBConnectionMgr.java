@@ -46,9 +46,9 @@ public class DBConnectionMgr {
     
     private String _driver = "org.h2.Driver",
     /*
-    _url = "jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE",
+    		_url = "jdbc:h2:~/test",
      */
-	_url = "jdbc:h2:~/test",
+    		_url = "jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE",
     _user = "sa",
     _password = "";
 

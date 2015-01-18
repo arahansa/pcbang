@@ -1,4 +1,4 @@
-package test.etc;
+package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,12 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class H2DBtest {
+public class H2DB_Initializer {
 
 	private static PreparedStatement pstmt;
 	private static Statement stmt;
 
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public  void initDatabase() throws SQLException, ClassNotFoundException {
 		Class.forName("org.h2.Driver");
 		/*Connection conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");*/
 		Connection conn = DriverManager.getConnection("jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE", "sa", "");

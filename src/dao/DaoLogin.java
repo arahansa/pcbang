@@ -1,23 +1,23 @@
-package test;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import test.etc.H2DBtest;
 import asset.DBConnectionMgr;
 
-public class LoginTest {
+public class DaoLogin {
+	
 	public static void main(String[] args) throws Exception {
-		H2DBtest h2db = new H2DBtest();
-		h2db.main(args);
-		
-		int test2 = insertUser();
-		boolean test = loginTest("test", "1234");
+		H2DB_Initializer h2db = new H2DB_Initializer();
+		h2db.initDatabase();
+		DaoLogin loginTest = new DaoLogin();
+		int test2 = loginTest.insertUser();
+		boolean test = loginTest.loginCheck("test", "1234");
 		System.out.println("로그인 결과 :" + test + "생성결과 :" + test2);
 	}
 
-	public static int insertUser() throws Exception {
+	public  int insertUser() throws Exception {
 		DBConnectionMgr pool = DBConnectionMgr.getInstance();
 
 		Connection con = null;
@@ -25,13 +25,19 @@ public class LoginTest {
 		String sql = null;
 
 		con = pool.getConnection();
-
-		sql = "insert into member_test (id, password) values ('test', '1234');";
+		sql = "select * from member_test where id='test'";
 		pstmt = con.prepareStatement(sql);
-		return pstmt.executeUpdate();
+		ResultSet rs = pstmt.executeQuery();
+		if(!rs.next()){
+			System.out.println("비어있는 값이군!?");
+			sql = "insert into member_test (id, password) values ('test', '1234');";
+			pstmt = con.prepareStatement(sql);
+			return pstmt.executeUpdate();
+		}
+		return 0;
 	}
 
-	public static boolean loginTest(String id, String password) {
+	public  boolean loginCheck(String id, String password) {
 		boolean flag = false;
 
 		DBConnectionMgr pool = DBConnectionMgr.getInstance();
