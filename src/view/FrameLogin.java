@@ -91,6 +91,7 @@ public class FrameLogin extends JFrame implements ActionListener{
         passwordField.setBounds(731, 529, 280, 30);
         passwordField.setOpaque(false);
         passwordField.setForeground(Color.green);
+        passwordField.setText("message");
         passwordField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         layeredPane.add(passwordField);
  
@@ -148,6 +149,7 @@ public class FrameLogin extends JFrame implements ActionListener{
 				//TODO main 에게 이거는 닫아주고, 새로운 매니지 뷰 화면 열어줘 요청
 				main.showFrameManage(this);
 			}else{
+				
 				//로그인에 실패한 경우
 				JOptionPane.showMessageDialog(null, "로그인 실패", "로그인 실패", JOptionPane.INFORMATION_MESSAGE);
 			}
