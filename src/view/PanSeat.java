@@ -1,18 +1,23 @@
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 public class PanSeat extends JPanel {
-	
-	
 	private BufferedImage img = null;
+	JLabel[] label = new JLabel[4];
 	private int numSeat;
+	
 	
 	public PanSeat(int numSeat) {
 		this.numSeat = numSeat;
@@ -23,7 +28,35 @@ public class PanSeat extends JPanel {
 		panImg.setBounds(0, 0, 99, 99);
 		panImg.setOpaque(false);
 				
-		add(panImg);
+		//상태정보 패널
+		JPanel panContent = new JPanel();
+		panContent.setLayout(null);
+		panContent.setBounds(0, 0, 99, 99);
+		int posLabel = 15;
+		for (int i = 0; i < 4; i++) {
+			if (i == 0)
+				label[i] = new JLabel((numSeat + 1) + ". 빈자리");
+			else
+				label[i] = new JLabel("");
+
+			label[i].setBounds(20, posLabel, 80, 15);
+			posLabel += 16;
+			label[i].setForeground(new Color(36, 205, 198));
+			label[i].setFont(new Font("배달의민족 한나", 1, 12));
+			panContent.add(label[i]);
+		}
+		panContent.setOpaque(false);
+		
+		
+		//제이레이어패널
+		JLayeredPane panLayered = new JLayeredPane();
+		panLayered.setBounds(0, 0, 1600, 900);
+		panLayered.setLayout(null);
+		panLayered.setOpaque(false);
+		panLayered.add(panImg, new Integer(0), 0);
+		panLayered.add(panContent, new Integer(1), 0);
+		add(panLayered);
+		
 		setVisible(true);
 		setOpaque(false);
 		setFocusable(true);

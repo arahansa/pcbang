@@ -45,6 +45,7 @@ public class Setting {
 	public static Rectangle layeredPane = bRectangle;
 	public static Rectangle backGround = bRectangle;
 	public static Rectangle myStarPanel = bRectangle;
+	public static Rectangle seat50 = new Rectangle(165, 109, 1368, 686);
 
 	// singleTone
 	private static Setting instance = new Setting();
